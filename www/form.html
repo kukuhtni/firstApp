@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/geturi.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var id_produk = decodeURI(getUrlVars()["id_produk"]);
+        var nama_barang = decodeURI(getUrlVars()["nama_barang"]);
+        var stock = decodeURI(getUrlVars()["stock"]);
+        var harga = decodeURI(getUrlVars()["harga"]);
+        $("#id_produk").val(id_produk);
+        $("#nama_barang").val(nama_barang);
+        $("#stock").val(stock);
+        $("#harga").val(harga);
+        $("#update").click(function() {
+            var id_produk = $("#id_produk").val();
+            var nama_barang = $("#nama_barang").val();
+            var stock = $("#stock").val();
+            var harga = $("#harga").val();
+            var dataString = "id_produk=" + id_produk + "&nama_barang=" + nama_barang + "&stock=" + stock + "&harga=" + harga + "&update=";
+            $.ajax({
+                type: "POST",
+                url: "https://kungfumas.000webhostapp.com/update.php",
+                data: dataString,
+                crossDomain: true,
+                cache: false,
+                beforeSend: function() {
+                    $("#update").val('Connecting...');
+                },
+                success: function(data) {
+                    if (data == "success") {
+                        alert("Updated");
+                        $("#update").val("Update");
+                    } else if (data == "error") {
+                        alert("error");
+                    }
+                }
+            });
+
+        });
+        $("#delete").click(function() {
+            var id_produk = $("#id_produk").val();
+            var dataString = "id_produk=" + id_produk + "&delete=";
+            $.ajax({
+                type: "GET",
+                url: "https://kungfumas.000webhostapp.com/delete.php",
+                data: dataString,
+                crossDomain: true,
+                cache: false,
+                beforeSend: function() {
+                    $("#delete").val('Connecting...');
+                },
+                success: function(data) {
+                    if (data == "success") {
+                        alert("Deleted");
+                        $("#delete").val("Delete");
+                    } else if (data == "error") {
+                        alert("error");
+                    }
+                }
+            });
+
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="index.html" class="button button-clear">Home</a>
+        <h1 class="nama_barang">Update Database</h1>
+        <a class="button button-clear" href="readjson.html">Read JSON</a>
+    </div>
+    <br/>
+    <br/>
+    <div class="list">
+        <input type="hid_produkden" id_produk="id_produk" value="" />
+        <div class="item">
+            <label>nama_barang</label>
+            <input type="text" id_produk="nama_barang" value="" />
+        </div>
+        <div class="item">
+            <label>stock</label>
+            <input type="text" id_produk="stock" value="" />
+        </div>
+        <div class="item">
+            <label>harga</label>
+            <input type="text" id_produk="harga" value="" />
+        </div>
+        <div class="item">
+            <input type="button" id_produk="update" class="button button-block" value="Update" />
+            <input type="button" id_produk="delete" class="button button-block" value="Delete" />
+        </div>
+    </div>
+</body>
+
+</html>
