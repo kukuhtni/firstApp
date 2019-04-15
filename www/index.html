@@ -126,8 +126,10 @@
                     },
                     success: function (data) {
                         if (data == "success") {
-                            alert("submited");
+                            alert("Data Berhasil Ditambah");
                             $("#submit").val('submit');
+                            
+                            window.location = "readjson.html";
                         } else if (data == "error") {
                             alert("error");
                         }
