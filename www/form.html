@@ -72,7 +72,10 @@
                     success: function (data) {
                         if (data == "success") {
                             alert("Updated");
+
                             $("#update").val("Update");
+
+                            window.location = "readjson.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -96,6 +99,7 @@
                         if (data == "success") {
                             alert("Deleted");
                             $("#delete").val("Delete");
+                            window.location = "readjson.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -286,12 +290,7 @@
             <div id="page-content">
                 <!-- Animations Header -->
 
-                <ul class="breadcrumb breadcrumb-top">
 
-                    <li><a href="index.html">Home</a></li>
-                    <li>Edit</li>
-                    <li>Olah Data</li>
-                </ul>
                 <!-- END Animations Header -->
 
                 <!-- Animate Page Block -->
@@ -307,9 +306,7 @@
                     <div class="row pul">
                         <div class="col-md-12">
                             <div class="mb-md pull-right">
-                                <a href="readjson.html" class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete"
-                                    name="delete" onClick="return confirm('Anda yakin ingin menghapus data?')"
-                                    data-toggle="tooltip"> delete data</a>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete" name="delete"> delete data</a>
                             </div>
                         </div>
                     </div>
@@ -367,9 +364,7 @@
                         <div class="form-group form-actions">
                             <div class="col-xs-12 text-right">
 
-                                <a href="readjson.html" class="mb-xs mt-xs mr-xs  btn btn-primary" id="delete"
-                                    name="delete" onClick="return confirm('Anda yakin ingin menghapus data?')"
-                                    data-toggle="tooltip"> Simpan</a>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-primary" id="update" name="update"> Simpan</a>
 
                                 <a href="readjson.html"> <button type="button"
                                         onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
