@@ -7,24 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
 
-    <title>Olah Data</title>
+    <nama_produk>READ JSON (AJAX)</nama_produk>
 
-    <!-- Bootstrap is included in its original form, unaltered -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Related styles of various icon packs and plugins -->
-    <link rel="stylesheet" href="css/plugins.css">
-
-    <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
-    <link rel="stylesheet" href="css/main.css">
-
-    <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
-
-    <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
-    <link rel="stylesheet" href="css/themes.css">
 
     <link rel="stylesheet" href="css/font-awesome.min.css" />
-
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
@@ -227,10 +213,10 @@
 
 
 
-                        <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
+                        <li> <a href="index.html"><i class="gi gi-home sidebar-nav-icon"></i>Home</a>
                         </li>
                         <li> <a href="readjson.html" class=" active"><i
-                                    class="fa fa-scissors sidebar-nav-icon"></i>Edit</a>
+                                    class="gi gi-user sidebar-nav-icon"></i>ReadJson</a>
                         </li>
 
 
@@ -289,7 +275,7 @@
                 <ul class="breadcrumb breadcrumb-top">
 
                     <li><a href="index.html">Home</a></li>
-                    <li>Edit</li>
+                    <li>ReadJson</li>
                     <li>Olah Data</li>
                 </ul>
                 <!-- END Animations Header -->
@@ -304,19 +290,10 @@
                         </h3>
 
                     </div>
-                    <div class="row pul">
-                        <div class="col-md-12">
-                            <div class="mb-md pull-right">
-                                <a href="readjson.html" class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete"
-                                    name="delete" onClick="return confirm('Anda yakin ingin menghapus data?')"
-                                    data-toggle="tooltip"> delete data</a>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Animate Page Content -->
                     <fieldset>
-                        <legend>Edit Data </legend>
+                        <legend class="text-center">Edit Data </legend>
 
 
                         <div class="form-group control-group">
@@ -362,19 +339,16 @@
 
 
 
-                        <legend>Pastikan lagi Data yang anda edit sudah Benar </legend>
+                        <legend class="text-center">Pastikan lagi Data yang di tambahkan sudah Benar </legend>
 
                         <div class="form-group form-actions">
                             <div class="col-xs-12 text-right">
 
-                                <a href="readjson.html" class="mb-xs mt-xs mr-xs  btn btn-primary" id="delete"
-                                    name="delete" onClick="return confirm('Anda yakin ingin menghapus data?')"
-                                    data-toggle="tooltip"> Simpan</a>
+                                <button id="update" name="update" class="btn btn-sm btn-primary">
+                                    Simpan</button>
 
-                                <a href="readjson.html"> <button type="button"
-                                        onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
-                                        data-toggle="tooltip" class="btn btn-sm btn-default">Batal</button>
-                                </a>
+                                <button id="delete" name="delete" class="btn btn-sm btn-primary">
+                                    Hapus</button>
 
 
                             </div>

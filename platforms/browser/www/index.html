@@ -66,6 +66,31 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $('#delete-form').submit(function () {
+            var dataString = $('#delete-form').serialize();
+            var id_produk = $("#id_produk").val();
+            var dataString = "id_produk=" + id_produk + "&delete=";
+            $.ajax({
+                type: "GET",
+                url: "http://pkl.notaxcloth.com/restandro/delete_produk.php",
+                data: dataString,
+                crossDomain: true,
+                cache: false,
+                beforeSend: function () {
+                    $("#delete").val('Connecting...');
+                },
+                success: function (data) {
+                    if (data == "success") {
+                        alert("Deleted");
+                        $("#delete").val("Delete");
+                    } else if (data == "error") {
+                        alert("error");
+                    }
+                }
+            });
+
+        });
         $('#my-form').submit(function () {
             var dataString = $('#my-form').serialize();
             var id_produk = $("#id_produk").val();
@@ -283,7 +308,7 @@
 
                         </h3>
                     </div>
-
+                    
                     <!-- Aid_produkate Page Content -->
                     <div class="form">
 

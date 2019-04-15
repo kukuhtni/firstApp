@@ -66,6 +66,31 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $('#delete-form').submit(function () {
+            var dataString = $('#delete-form').serialize();
+            var id_produk = $("#id_produk").val();
+            var dataString = "id_produk=" + id_produk + "&delete=";
+            $.ajax({
+                type: "GET",
+                url: "http://pkl.notaxcloth.com/restandro/delete_produk.php",
+                data: dataString,
+                crossDomain: true,
+                cache: false,
+                beforeSend: function () {
+                    $("#delete").val('Connecting...');
+                },
+                success: function (data) {
+                    if (data == "success") {
+                        alert("Deleted");
+                        $("#delete").val("Delete");
+                    } else if (data == "error") {
+                        alert("error");
+                    }
+                }
+            });
+
+        });
         $('#my-form').submit(function () {
             var dataString = $('#my-form').serialize();
             var id_produk = $("#id_produk").val();
@@ -210,9 +235,10 @@
 
 
 
-                        <li> <a href="index.html" class=" active"><i class="gi gi-home sidebar-nav-icon"></i>Home</a>
+                        <li> <a href="index.html" class=" active"><i
+                                    class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
-                        <li> <a href="readjson.html"><i class="gi gi-user sidebar-nav-icon"></i>ReadJson</a>
+                        <li> <a href="readjson.html"><i class="fa fa-scissors sidebar-nav-icon"></i>Edit</a>
                         </li>
 
 
@@ -271,6 +297,7 @@
                 <ul class="breadcrumb breadcrumb-top">
 
                     <li><a href="index.html">Home</a></li>
+                    <li>Insert</li>
                 </ul>
                 <!-- END Aid_produkations Header -->
 
@@ -295,7 +322,7 @@
 
 
                             <fieldset>
-                                <legend class="text-center">Masukan Data Dengan Benar </legend>
+                                <legend>Masukan Data Dengan Benar </legend>
 
 
                                 <div class="form-group control-group">
@@ -341,7 +368,7 @@
 
 
 
-                                <legend class="text-center">Pastikan lagi Data yang di tambahkan sudah Benar </legend>
+                                <legend>Pastikan lagi Data yang di tambahkan sudah Benar </legend>
 
                                 <div class="form-group form-actions">
                                     <div class="col-xs-12 text-right">
