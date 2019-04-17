@@ -48,17 +48,16 @@
                     var stock = field.stock;
                     var keterangan = field.keterangan;
 
-                    $("#output").append("<a class='item' href='form.html?id_produk=" +
+                    $("#output1").append(
+                        " <tr><td ><a class='item' href='form.html?id_produk=" +
                         id_produk +
                         "&nama_produk=" + nama_produk + "&jenis=" + jenis + "&harga=" +
                         harga + "&stock=" + stock + "&keterangan=" +
-                        keterangan + "'> <span class='item-note'> <b>id :</b> " +
-                        id_produk + "</span></a>, <b> nama produk :</b> " + nama_produk +
-                        ",<b> jenis :</b> " +
-                        jenis + ", <b>harga : </b>" +
-                        harga + ",<b> stock : </b>" +
-                        stock + ",<b> keterangan :</b> " +
-                        keterangan + "<br/>");
+                        keterangan + "'>" +
+                        id_produk + "</a></td><td>" + nama_produk + "</td><td>" + jenis +
+                        "</td> <td>" + harga + "</td><td>" + stock + "</td><td>" +
+                        keterangan + "</td></tr>");
+
                 });
             });
         });
@@ -159,7 +158,7 @@
                         <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
                         <li> <a href="readjson.html" class=" active"><i
-                                    class="fa fa-scissors sidebar-nav-icon"></i>Edit</a>
+                                    class="fa fa-users sidebar-nav-icon"></i>Data</a>
                         </li>
 
 
@@ -223,7 +222,7 @@
                     <div class="widget-extra themed-background-dark">
 
                         <h3 class="widget-content-light">
-                            <strong>Read Json </strong>
+                            <strong>Data Produk </strong>
 
                         </h3>
 
@@ -231,8 +230,55 @@
                     </div>
 
                     <!-- Animate Page Content -->
-                    <ul class="list" id="output">
-                    </ul>
+                    <div class="table-responsive">
+
+
+                        <table id="example-datatable"
+                            class="table table-vcenter table-condensed table-bordered dataTable no-footer" role="grid"
+                            aria-describedby="example-datatable_info">
+                            <thead class="center">
+                                <tr role="row">
+                                    <th class="sorting_asc center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column ascending"
+                                        style="width: 201px;">ID Produk</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Nama Produk</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Jenis</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Harga</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Stock</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Keterangan</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="center" id="output1">
+
+
+
+
+
+
+
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
 
                 </div>
                 <!-- END Animate Page Block -->

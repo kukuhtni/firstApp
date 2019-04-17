@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
 
-    <title>Olah Data</title>
+    <title>READ JSON (AJAX)</title>
+
 
     <!-- Bootstrap is included in its original form, unaltered -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -22,122 +23,46 @@
 
     <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
     <link rel="stylesheet" href="css/themes.css">
+    <!-- END Stylesheets -->
 
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-
-
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Modernizr (browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it, eg IE8) -->
+    <script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript" src="js/geturi.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var id_produk = decodeURI(getUrlVars()["id_produk"]);
-            var nama_produk = decodeURI(getUrlVars()["nama_produk"]);
-            var jenis = decodeURI(getUrlVars()["jenis"]);
-            var harga = decodeURI(getUrlVars()["harga"]);
-            var stock = decodeURI(getUrlVars()["stock"]);
-            var keterangan = decodeURI(getUrlVars()["keterangan"]);
-            $("#id_produk").val(id_produk);
-            $("#nama_produk").val(nama_produk);
-
-            $("#jenis").val(jenis);
-            $("#harga").val(harga);
-            $("#stock").val(stock);
-            $("#keterangan").val(keterangan);
-
-
-            $("#update").click(function () {
-                var id_produk = $("#id_produk").val();
-                var nama_produk = $("#nama_produk").val();
-
-                var jenis = $("#jenis").val();
-                var harga = $("#harga").val();
-                var stock = $("#stock").val();
-                var keterangan = $("#keterangan").val();
-
-                var dataString = "&id_produk=" + id_produk + "&nama_produk=" +
-                    nama_produk + "&jenis=" +
-                    jenis + "&harga=" + harga + "&stock=" + stock + "&keterangan=" + keterangan +
-                    "&update=";
-                $.ajax({
-                    type: "POST",
-                    url: "http://pkl.notaxcloth.com/restandro/update_produk.php",
-                    data: dataString,
-                    crossDomain: true,
-                    cache: false,
-                    beforeSend: function () {
-                        $("#update").val('Connecting...');
-                    },
-                    success: function (data) {
-                        if (data == "success") {
-                            alert("Data Berhasil Dirubah");
-
-                            $("#update").val("Update");
-
-                            window.location = "readjson.html";
-                        } else if (data == "error") {
-                            alert("error");
-                        }
-                    }
-                });
-
-            });
-            $("#delete").click(function () {
-                var id_produk = $("#id_produk").val();
-                var dataString = "id_produk=" + id_produk + "&delete=";
-                $.ajax({
-                    type: "GET",
-                    url: "http://pkl.notaxcloth.com/restandro/delete_produk.php",
-                    data: dataString,
-                    crossDomain: true,
-                    cache: false,
-                    beforeSend: function () {
-                        $("#delete").val('Connecting...');
-                    },
-                    success: function (data) {
-                        if (data == "success") {
-                            alert("Data Berhasil Di hapus");
-                            $("#delete").val("Delete");
-                            window.location = "readjson.html";
-                        } else if (data == "error") {
-                            alert("error");
-                        }
-                    }
-                });
-
-            });
-        });
-
-        function editData(id_produk) {
-
-            $.ajax({
-                type: 'GET',
-                url: 'http://pkl.notaxcloth.com/restandro/cari_produk.php' + id_produk,
-                dataType: JSON,
-                crossDomain: true,
-                cache: false,
-                success: function (data) {
-
-                    $("#id_produk").val(id_produk);
-                    $("#nama_produk").val(nama_produk);
-
-                    $("#jenis").val(jenis);
-                    $("#harga").val(harga);
-                    $("#stock").val(stock);
-                    $("#keterangan").val(keterangan);
-
-                    $('$id_produk').attr('readonly', 'true');
-                }
-            });
-
-        }
-    </script>
 
 </head>
 
 <body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = "http://pkl.notaxcloth.com/restandro/json_produk.php";
+            $.getJSON(url, function (result) {
+                console.log(result);
+                $.each(result, function (i, field) {
 
+                    var id_produk = field.id_produk;
+                    var nama_produk = field.nama_produk;
+                    var jenis = field.jenis;
+                    var harga = field.harga;
+                    var stock = field.stock;
+                    var keterangan = field.keterangan;
+
+                    $("#output").append("<a class='item' href='form.html?id_produk=" +
+                        id_produk +
+                        "&nama_produk=" + nama_produk + "&jenis=" + jenis + "&harga=" +
+                        harga + "&stock=" + stock + "&keterangan=" +
+                        keterangan + "'> <span class='item-note'> <b>id :</b> " +
+                        id_produk + "</span></a>, <b> nama produk :</b> " + nama_produk +
+                        ",<b> jenis :</b> " +
+                        jenis + ", <b>harga : </b>" +
+                        harga + ",<b> stock : </b>" +
+                        stock + ",<b> keterangan :</b> " +
+                        keterangan + "<br/>");
+                });
+            });
+        });
+    </script>
     <!-- Preloader -->
     <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
     <!-- Used only if page preloader is enabled from inc/config (PHP version) or the class 'page-loading' is added in body element (HTML version) -->
@@ -234,7 +159,7 @@
                         <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
                         <li> <a href="readjson.html" class=" active"><i
-                                    class="fa fa-users sidebar-nav-icon"></i>Data</a>
+                                    class="fa fa-scissors sidebar-nav-icon"></i>Edit</a>
                         </li>
 
 
@@ -298,86 +223,17 @@
                     <div class="widget-extra themed-background-dark">
 
                         <h3 class="widget-content-light">
-                            <strong>Olah Data</strong>
+                            <strong>Read Json </strong>
 
                         </h3>
 
-                    </div>
-                    <div class="row pul">
-                        <div class="col-md-12">
-                            <div class="mb-md pull-right">
-                                <a class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete" name="delete"> delete data</a>
-                            </div>
-                        </div>
+                        <legend class="text-center widget-content-light">Click ID Untuk Mengedit </legend>
                     </div>
 
                     <!-- Animate Page Content -->
-                    <fieldset>
-                        <legend>Edit Data </legend>
+                    <ul class="list" id="output">z
+                    </ul>
 
-
-                        <div class="form-group control-group">
-                            <label class="col-md-4 control-label" for="form-field-1">ID PRODUK</label>
-                            <div class="col-md-8 controls">
-                                <input type="text" id="id_produk" placeholder="id_produk" />
-                            </div>
-                        </div>
-                        <div class="form-group control-group">
-
-                            <label class="col-md-4 control-label" for="form-field-1">NAMA PRODUK</label>
-                            <div class="col-md-8 controls">
-                                <input type="text" id="nama_produk" placeholder="nama_produk" />
-                            </div>
-                        </div>
-                        <div class="form-group control-group">
-                            <label class="col-md-4 control-label" for="form-field-1">JENIS</label>
-                            <div class="col-md-8 controls">
-                                <input type="text" id="jenis" placeholder="jenis" />
-                            </div>
-                        </div>
-                        <div class="form-group control-group">
-                            <label class="col-md-4 control-label" for="form-field-1">HARGA</label>
-                            <div class="col-md-8 controls">
-
-                                <input type="text" id="harga" placeholder="harga" />
-                            </div>
-                        </div>
-                        <div class="form-group control-group">
-                            <label class="col-md-4 control-label" for="form-field-1">STOCK</label>
-                            <div class="col-md-8 controls">
-
-                                <input type="text" id="stock" placeholder="stock" />
-
-                            </div>
-                        </div>
-                        <div class="form-group control-group">
-                            <label class="col-md-4 control-label" for="form-field-1">KETERANGAN</label>
-                            <div class="col-md-8 controls">
-                                <input type="text" id="keterangan" placeholder="keterangan" />
-                            </div>
-                        </div>
-
-
-
-                        <legend>Pastikan lagi Data yang anda edit sudah Benar </legend>
-
-                        <div class="form-group form-actions">
-                            <div class="col-xs-12 text-right">
-
-                                <a class="mb-xs mt-xs mr-xs  btn btn-primary" id="update" name="update"> Simpan</a>
-
-                                <a href="readjson.html"> <button type="button"
-                                        onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
-                                        data-toggle="tooltip" class="btn btn-sm btn-default">Batal</button>
-                                </a>
-
-
-                            </div>
-                        </div>
-
-
-
-                    </fieldset>
                 </div>
                 <!-- END Animate Page Block -->
 
