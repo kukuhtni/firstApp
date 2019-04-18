@@ -55,26 +55,12 @@
                         harga + "&stock=" + stock + "&keterangan=" +
                         keterangan + "'>" +
                         id_produk + "</a></td><td>" + nama_produk + "</td><td>" + jenis +
-                        "</td> <td>" + harga + "</td><td>" + stock + "</td><td>" +
+                        "</td> <td> RP. " + harga + "</td><td>" + stock + "</td><td>" +
                         keterangan + "</td></tr>");
 
                 });
             });
-
-            screen.orientation.lock('landscape');
-
         });
-        screen.orientation.lock('landscape');
-
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-        function onDeviceReady() {
-            window.screen.lockOrientation("landscape");
-            alert("123");
-
-            screen.orientation.lock('landscape');
-
-        }
     </script>
     <!-- Preloader -->
     <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
@@ -255,7 +241,7 @@
                                     <th class="sorting_asc center" tabindex="0" aria-controls="example-datatable"
                                         rowspan="1" colspan="1" aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column ascending"
-                                        style="width: 201px;">ID Produk</th>
+                                        style="width: 201px;">ID</th>
                                     <th class="sorting center" tabindex="0" aria-controls="example-datatable"
                                         rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending"

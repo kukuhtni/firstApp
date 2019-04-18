@@ -9,9 +9,6 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.contoh.helloappdb"
-    },
-    "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "com.contoh.helloappdb"
     }
   },
   "dependent_plugins": {}

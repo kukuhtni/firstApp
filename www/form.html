@@ -306,7 +306,8 @@
                     <div class="row pul">
                         <div class="col-md-12">
                             <div class="mb-md pull-right">
-                                <a class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete" name="delete"> delete data</a>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-warning" href="#modal-delete" data-toggle="modal"
+                                class="enable-tooltip"> delete data</a>
                             </div>
                         </div>
                     </div>
@@ -364,7 +365,8 @@
                         <div class="form-group form-actions">
                             <div class="col-xs-12 text-right">
 
-                                <a class="mb-xs mt-xs mr-xs  btn btn-primary" id="update" name="update"> Simpan</a>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-primary" href="#modal-edit" data-toggle="modal"
+                                    class="enable-tooltip"> Simpan</a>
 
                                 <a href="readjson.html"> <button type="button"
                                         onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
@@ -439,6 +441,88 @@
 
                         </fieldset>
                     </form>
+                </div>
+                <!-- END Modal Body -->
+            </div>
+        </div>
+    </div>
+    <div id="modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-nama_produk">Anda Yakin Ingin Memperbarui
+                        Data yang sudah ada?</h2>
+                </div>
+                <!-- END Modal Header -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <fieldset>
+
+                        <div class="form-group control-group">
+                            <div class="col-md-8 controls">
+                                <div class="form-group form-actions">
+                                    <div class="col-xs-12 text-right">
+                                        <a class="mb-xs mt-xs mr-xs  btn btn-primary" id="update" name="update">
+                                            Simpan</a>
+
+                                        <button type="button" data-toggle="tooltip" class="btn btn-sm btn-default"
+                                            data-dismiss="modal">Close</button>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+
+                </div>
+                <!-- END Modal Body -->
+            </div>
+        </div>
+    </div>
+    <div id="modal-delete" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-nama_produk">Anda Yakin Ingin Menghapus data ini?</h2>
+                </div>
+                <!-- END Modal Header -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <fieldset>
+
+                        <div class="form-group control-group">
+                            <div class="col-md-8 controls">
+                                <div class="form-group form-actions">
+                                    <div class="col-xs-12 text-right">
+
+                                        <a class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete" name="delete"> delete
+                                        </a>
+
+                                        <button type="button" data-toggle="tooltip" class="btn btn-sm btn-default"
+                                            data-dismiss="modal">Close</button>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+
                 </div>
                 <!-- END Modal Body -->
             </div>
