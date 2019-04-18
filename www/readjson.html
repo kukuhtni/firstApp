@@ -60,7 +60,21 @@
 
                 });
             });
+
+            screen.orientation.lock('landscape');
+
         });
+        screen.orientation.lock('landscape');
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            window.screen.lockOrientation("landscape");
+            alert("123");
+
+            screen.orientation.lock('landscape');
+
+        }
     </script>
     <!-- Preloader -->
     <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->

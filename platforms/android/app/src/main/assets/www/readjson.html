@@ -8,26 +8,7 @@
 
 
     <title>READ JSON (AJAX)</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "http://pkl.notaxcloth.com/restandro/json_produk.php",
-                crossDomain: true,
-                cache: false,
-                success: function (result) {
-                    var result = $.parseJSON(result);
-                    $.each(result, function (i, field) {
-                        $("#output").append("id: " + field.id_produk + " nama_produk: " +
-                            field.nama_produk + " jenis:" + field.jenis + " harga:" +
-                            field.harga + " stock:" + field.stock + " keterangan:" +
-                            field.keterangan + "<br/>");
-                    });
-                }
-            });
-        });
-    </script>
+
 
     <!-- Bootstrap is included in its original form, unaltered -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -52,6 +33,35 @@
 </head>
 
 <body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = "http://pkl.notaxcloth.com/restandro/json_produk.php";
+            $.getJSON(url, function (result) {
+                console.log(result);
+                $.each(result, function (i, field) {
+
+                    var id_produk = field.id_produk;
+                    var nama_produk = field.nama_produk;
+                    var jenis = field.jenis;
+                    var harga = field.harga;
+                    var stock = field.stock;
+                    var keterangan = field.keterangan;
+
+                    $("#output1").append(
+                        " <tr><td ><a class='item' href='form.html?id_produk=" +
+                        id_produk +
+                        "&nama_produk=" + nama_produk + "&jenis=" + jenis + "&harga=" +
+                        harga + "&stock=" + stock + "&keterangan=" +
+                        keterangan + "'>" +
+                        id_produk + "</a></td><td>" + nama_produk + "</td><td>" + jenis +
+                        "</td> <td>" + harga + "</td><td>" + stock + "</td><td>" +
+                        keterangan + "</td></tr>");
+
+                });
+            });
+        });
+    </script>
     <!-- Preloader -->
     <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
     <!-- Used only if page preloader is enabled from inc/config (PHP version) or the class 'page-loading' is added in body element (HTML version) -->
@@ -126,13 +136,13 @@
                         <div class="sidebar-user-name">Diendra</div>
                         <div class="sidebar-user-links">
                             <a href="https://www.facebook.com/spekcomun" data-toggle="tooltip" data-placement="bottom"
-                                title="Facebook"><i class="fa fa-facebook"></i></a>
+                                nama_produk="Facebook"><i class="fa fa-facebook"></i></a>
                             <a href="https://www.instagram.com/diiendra/" data-toggle="tooltip" data-placement="bottom"
-                                title="Instagram"><i class="fa fa-instagram"></i></a>
+                                nama_produk="Instagram"><i class="fa fa-instagram"></i></a>
                             <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
-                            <a href="#modal-user" data-toggle="modal" class="enable-tooltip" title="Gmail"><i
+                            <a href="#modal-user" data-toggle="modal" class="enable-tooltip" nama_produk="Gmail"><i
                                     class="fa fa-google"></i></a>
-                            <a href="#modal-user" data-toggle="modal" class="enable-tooltip" title="Phone"><i
+                            <a href="#modal-user" data-toggle="modal" class="enable-tooltip" nama_produk="Phone"><i
                                     class="fa fa-phone"></i></a>
                         </div>
                     </div>
@@ -145,10 +155,10 @@
 
 
 
-                        <li> <a href="index.html"><i class="gi gi-home sidebar-nav-icon"></i>Home</a>
+                        <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
                         <li> <a href="readjson.html" class=" active"><i
-                                    class="gi gi-user sidebar-nav-icon"></i>ReadJson</a>
+                                    class="fa fa-users sidebar-nav-icon"></i>Data</a>
                         </li>
 
 
@@ -204,10 +214,7 @@
             <div id="page-content">
                 <!-- Animations Header -->
 
-                <ul class="breadcrumb breadcrumb-top">
 
-                    <li><a href="index.html">Home/ReadJson</a></li>
-                </ul>
                 <!-- END Animations Header -->
 
                 <!-- Animate Page Block -->
@@ -215,15 +222,64 @@
                     <div class="widget-extra themed-background-dark">
 
                         <h3 class="widget-content-light">
-                            <strong>Read Json </strong>
+                            <strong>Data Produk </strong>
 
                         </h3>
 
-                        <legend class="text-center widget-content-light">data terbaru selalu berada di bawah </legend>
+                        <legend class="text-center widget-content-light">Click ID Untuk Mengedit </legend>
                     </div>
 
                     <!-- Animate Page Content -->
-                    <div id="output"></div>
+                    <div class="table-responsive">
+
+
+                        <table id="example-datatable"
+                            class="table table-vcenter table-condensed table-bordered dataTable no-footer" role="grid"
+                            aria-describedby="example-datatable_info">
+                            <thead class="center">
+                                <tr role="row">
+                                    <th class="sorting_asc center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column ascending"
+                                        style="width: 201px;">ID Produk</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Nama Produk</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Jenis</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Harga</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Stock</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Keterangan</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="center" id="output1">
+
+
+
+
+
+
+
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+
                 </div>
                 <!-- END Animate Page Block -->
 
@@ -247,83 +303,14 @@
     <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
 
     <!-- User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info) -->
-    <div id="modal-user-settings" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header text-center">
-                    <h2 class="modal-title"><i class="fa fa-pencil"></i> Settings</h2>
-                </div>
-                <!-- END Modal Header -->
 
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <form action="index.html" method="post" enctype="multipart/form-data"
-                        class="form-horizontal form-bordered" onsubmit="return false;">
-                        <fieldset>
-                            <legend>Vital Info</legend>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Username</label>
-                                <div class="col-md-8">
-                                    <p class="form-control-static">Admin</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="user-settings-email">Email</label>
-                                <div class="col-md-8">
-                                    <input type="email" id="user-settings-email" name="user-settings-email"
-                                        class="form-control" value="admin@example.com">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="user-settings-notifications">Email
-                                    Notifications</label>
-                                <div class="col-md-8">
-                                    <label class="switch switch-primary">
-                                        <input type="checkbox" id="user-settings-notifications"
-                                            name="user-settings-notifications" value="1" checked>
-                                        <span></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Password Update</legend>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="user-settings-password">New Password</label>
-                                <div class="col-md-8">
-                                    <input type="password" id="user-settings-password" name="user-settings-password"
-                                        class="form-control" placeholder="Please choose a complex one..">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="user-settings-repassword">Confirm New
-                                    Password</label>
-                                <div class="col-md-8">
-                                    <input type="password" id="user-settings-repassword" name="user-settings-repassword"
-                                        class="form-control" placeholder="..and confirm it!">
-                                </div>
-                            </div>
-                        </fieldset>
-                        <div class="form-group form-actions">
-                            <div class="col-xs-12 text-right">
-                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-sm btn-primary">Save Changes</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- END Modal Body -->
-            </div>
-        </div>
-    </div>
     <!-- END User Settings -->
     <div id="modal-user" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header text-center">
-                    <h2 class="modal-title"><i class="fa fa-pencil"></i> CONTACT ME</h2>
+                    <h2 class="modal-nama_produk"><i class="fa fa-pencil"></i> CONTACT ME</h2>
                 </div>
                 <!-- END Modal Header -->
 

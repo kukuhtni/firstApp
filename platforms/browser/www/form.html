@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
 
-    <nama_produk>READ JSON (AJAX)</nama_produk>
+    <title>Olah Data</title>
 
     <!-- Bootstrap is included in its original form, unaltered -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -71,8 +71,11 @@
                     },
                     success: function (data) {
                         if (data == "success") {
-                            alert("Updated");
+                            alert("Data Berhasil Dirubah");
+
                             $("#update").val("Update");
+
+                            window.location = "readjson.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -94,8 +97,9 @@
                     },
                     success: function (data) {
                         if (data == "success") {
-                            alert("Deleted");
+                            alert("Data Berhasil Di hapus");
                             $("#delete").val("Delete");
+                            window.location = "readjson.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -227,10 +231,10 @@
 
 
 
-                        <li> <a href="index.html"><i class="gi gi-home sidebar-nav-icon"></i>Home</a>
+                        <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
                         <li> <a href="readjson.html" class=" active"><i
-                                    class="gi gi-user sidebar-nav-icon"></i>ReadJson</a>
+                                    class="fa fa-users sidebar-nav-icon"></i>Data</a>
                         </li>
 
 
@@ -286,12 +290,7 @@
             <div id="page-content">
                 <!-- Animations Header -->
 
-                <ul class="breadcrumb breadcrumb-top">
 
-                    <li><a href="index.html">Home</a></li>
-                    <li>ReadJson</li>
-                    <li>Olah Data</li>
-                </ul>
                 <!-- END Animations Header -->
 
                 <!-- Animate Page Block -->
@@ -304,10 +303,17 @@
                         </h3>
 
                     </div>
+                    <div class="row pul">
+                        <div class="col-md-12">
+                            <div class="mb-md pull-right">
+                                <a class="mb-xs mt-xs mr-xs  btn btn-warning" id="delete" name="delete"> delete data</a>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Animate Page Content -->
                     <fieldset>
-                        <legend class="text-center">Edit Data </legend>
+                        <legend>Edit Data </legend>
 
 
                         <div class="form-group control-group">
@@ -353,16 +359,17 @@
 
 
 
-                        <legend class="text-center">Pastikan lagi Data yang di tambahkan sudah Benar </legend>
+                        <legend>Pastikan lagi Data yang anda edit sudah Benar </legend>
 
                         <div class="form-group form-actions">
                             <div class="col-xs-12 text-right">
 
-                                <button id="update" name="update" class="btn btn-sm btn-primary">
-                                    Simpan</button>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-primary" id="update" name="update"> Simpan</a>
 
-                                <button id="delete" name="delete" class="btn btn-sm btn-primary">
-                                    Hapus</button>
+                                <a href="readjson.html"> <button type="button"
+                                        onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
+                                        data-toggle="tooltip" class="btn btn-sm btn-default">Batal</button>
+                                </a>
 
 
                             </div>

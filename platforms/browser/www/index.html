@@ -126,8 +126,10 @@
                     },
                     success: function (data) {
                         if (data == "success") {
-                            alert("submited");
+                            alert("Data Berhasil Ditambah");
                             $("#submit").val('submit');
+                            
+                            window.location = "readjson.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -235,9 +237,10 @@
 
 
 
-                        <li> <a href="index.html" class=" active"><i class="gi gi-home sidebar-nav-icon"></i>Home</a>
+                        <li> <a href="index.html" class=" active"><i
+                                    class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
-                        <li> <a href="readjson.html"><i class="gi gi-user sidebar-nav-icon"></i>ReadJson</a>
+                        <li> <a href="readjson.html"><i class="fa fa-users sidebar-nav-icon"></i>Data</a>
                         </li>
 
 
@@ -293,10 +296,7 @@
             <div id="page-content">
                 <!-- Aid_produkations Header -->
 
-                <ul class="breadcrumb breadcrumb-top">
 
-                    <li><a href="index.html">Home</a></li>
-                </ul>
                 <!-- END Aid_produkations Header -->
 
                 <!-- Aid_produkate Page Block -->
@@ -308,7 +308,7 @@
 
                         </h3>
                     </div>
-                    
+
                     <!-- Aid_produkate Page Content -->
                     <div class="form">
 
@@ -320,7 +320,7 @@
 
 
                             <fieldset>
-                                <legend class="text-center">Masukan Data Dengan Benar </legend>
+                                <legend>Masukan Data Dengan Benar </legend>
 
 
                                 <div class="form-group control-group">
@@ -366,7 +366,7 @@
 
 
 
-                                <legend class="text-center">Pastikan lagi Data yang di tambahkan sudah Benar </legend>
+                                <legend>Pastikan lagi Data yang di tambahkan sudah Benar </legend>
 
                                 <div class="form-group form-actions">
                                     <div class="col-xs-12 text-right">

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
 
-    <nama_produk>READ JSON (AJAX)</nama_produk>
+    <title>READ JSON (AJAX)</title>
 
 
     <!-- Bootstrap is included in its original form, unaltered -->
@@ -48,16 +48,16 @@
                     var stock = field.stock;
                     var keterangan = field.keterangan;
 
-                    $("#output").append("<a class='item' href='form.html?id_produk=" +
+                    $("#output1").append(
+                        " <tr><td ><a class='item' href='form.html?id_produk=" +
                         id_produk +
                         "&nama_produk=" + nama_produk + "&jenis=" + jenis + "&harga=" +
                         harga + "&stock=" + stock + "&keterangan=" +
-                        keterangan + "'> <span class='item-note'> id : " +
-                        id_produk + "</span></a> <span> nama produk : " + nama_produk +
-                        " </span> <span>" +
-                        jenis + "</span> <span> harga : " +
-                        harga + "</span> <span> keterangan : " +
-                        keterangan + "</span><br/>");
+                        keterangan + "'>" +
+                        id_produk + "</a></td><td>" + nama_produk + "</td><td>" + jenis +
+                        "</td> <td>" + harga + "</td><td>" + stock + "</td><td>" +
+                        keterangan + "</td></tr>");
+
                 });
             });
         });
@@ -155,10 +155,10 @@
 
 
 
-                        <li> <a href="index.html"><i class="gi gi-home sidebar-nav-icon"></i>Home</a>
+                        <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
                         <li> <a href="readjson.html" class=" active"><i
-                                    class="gi gi-user sidebar-nav-icon"></i>ReadJson</a>
+                                    class="fa fa-users sidebar-nav-icon"></i>Data</a>
                         </li>
 
 
@@ -214,10 +214,7 @@
             <div id="page-content">
                 <!-- Animations Header -->
 
-                <ul class="breadcrumb breadcrumb-top">
 
-                    <li><a href="index.html">Home/ReadJson</a></li>
-                </ul>
                 <!-- END Animations Header -->
 
                 <!-- Animate Page Block -->
@@ -225,16 +222,63 @@
                     <div class="widget-extra themed-background-dark">
 
                         <h3 class="widget-content-light">
-                            <strong>Read Json </strong>
+                            <strong>Data Produk </strong>
 
                         </h3>
 
-                        <legend class="text-center widget-content-light">data terbaru selalu berada di bawah </legend>
+                        <legend class="text-center widget-content-light">Click ID Untuk Mengedit </legend>
                     </div>
 
                     <!-- Animate Page Content -->
-                    <ul class="list" id="output">
-                    </ul>
+                    <div class="table-responsive">
+
+
+                        <table id="example-datatable"
+                            class="table table-vcenter table-condensed table-bordered dataTable no-footer" role="grid"
+                            aria-describedby="example-datatable_info">
+                            <thead class="center">
+                                <tr role="row">
+                                    <th class="sorting_asc center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column ascending"
+                                        style="width: 201px;">ID Produk</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Nama Produk</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Jenis</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Harga</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Stock</th>
+                                    <th class="sorting center" tabindex="0" aria-controls="example-datatable"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 249px;">Keterangan</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="center" id="output1">
+
+
+
+
+
+
+
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
 
                 </div>
                 <!-- END Animate Page Block -->
