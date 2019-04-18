@@ -75,7 +75,7 @@
 
                             $("#update").val("Update");
 
-                            window.location = "readjson.html";
+                            window.location = "index.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -99,7 +99,7 @@
                         if (data == "success") {
                             alert("Data Berhasil Di hapus");
                             $("#delete").val("Delete");
-                            window.location = "readjson.html";
+                            window.location = "index.html";
                         } else if (data == "error") {
                             alert("error");
                         }
@@ -231,9 +231,9 @@
 
 
 
-                        <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
+                        <li> <a href="insert.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
                         </li>
-                        <li> <a href="readjson.html" class=" active"><i
+                        <li> <a href="index.html" class=" active"><i
                                     class="fa fa-users sidebar-nav-icon"></i>Data</a>
                         </li>
 
@@ -368,7 +368,7 @@
                                 <a class="mb-xs mt-xs mr-xs  btn btn-primary" href="#modal-edit" data-toggle="modal"
                                     class="enable-tooltip"> Simpan</a>
 
-                                <a href="readjson.html"> <button type="button"
+                                <a href="index.html"> <button type="button"
                                         onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
                                         data-toggle="tooltip" class="btn btn-sm btn-default">Batal</button>
                                 </a>
